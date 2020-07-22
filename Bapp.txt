@@ -1,0 +1,76 @@
+var budgetController = (function() {
+	var x = 23;
+	var add = function(a) {
+		return x + a;
+	}
+
+	return {
+		publicTest: function(b) {
+			console.log(add(b));
+		}
+	}
+})();
+
+-In this module an anonymous function is declared and returned.
+-The variables x and add cannot be accessed outside their scope as they are private
+-Whereas due to the power of closures the inner function publicTest can access
+x and add.
+**budgetController.x
+==>undefined
+
+**budgetController.add(2)
+==>VM91:1 Uncaught TypeError: budgetController.add is not a function
+    at <anonymous>:1:18
+
+**budgetController.publicTest(3)
+==> 26
+
+##Seperation concern: Each part of the application should be interested in doing
+one thing only. The modules should not be interrelated with each other.
+
+##The modules budgetController and UIController are stand alone modules they dont
+even know that the other one exists.
+##Therefore there must be some way to connect them and update the data from time to time
+Hnce for that purpose the 3rd module is created called as controller.
+
+-How to add a eventlistener for a particular key and not a click ?
+==>document.addEventListener('keypress', function(event) {
+
+		if (event.keyCode === 13 || event.which === 13) {
+			console.log('ENTER was pressed.');
+		}
+	});
+
+
+-In the UIController we use return to return a function for inheriting the power 
+of closures so that the recieved input values can be dealt by all modules in 
+further course of action.
+
+####eg:
+return {
+	//here you should not use the var keyword
+//after each line of code there should be a comma and not a semi-colon.
+}
+
+-When we want a function to be public we should return it as an object.
+Eg:return {
+		init: function() {
+			console.log('application started');
+		}
+	}
+
+-When we want to create lots of objects we create function constructors
+
+-When you need methods in function constructor
+
+-When you need the cursor to come to a certain field use this
+.focus()
+
+-EVENT DELEGATION:
+-Event delegation is not to create an event handler to the original element but to
+attach it to a parent element.This happens because of event bubbling.
+
+-Use cases for EVENT DELEGATION:
+1.When we have an element with lots of child elements that we are interested in.
+2.When we want an event handler attached to an element that is not yet in the DOM when
+our page is loaded.
