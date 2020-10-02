@@ -73,4 +73,4 @@ attach it to a parent element.This happens because of event bubbling.
 -Use cases for EVENT DELEGATION:
 1.When we have an element with lots of child elements that we are interested in.
 2.When we want an event handler attached to an element that is not yet in the DOM when
-our page is loaded.
+our page is loaded. 
